@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "removeComments": true,
+    "outDir": "./dist/",
     "allowJs": true,
+    "noEmit": true,
+    // "noEmit": false, // for webpack compile
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -16,10 +20,13 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react"
   },
+  "compilerOnSave": true,
   "include": [
     "src"
+  ],
+  "exclude": [
+    "./node_modules"
   ]
 }

@@ -1,6 +1,23 @@
 # Chatpack Web Bot
 This is the web based chat application of Chatpack.
 
+## Todos
+- Chatbox
+- Header
+- Avatars
+- Message Bubbles
+ - Regular text
+ - Quick Replies
+    - Input forms
+    - Regular text
+ - Images
+ - Cards
+    - Images
+    - Next and Preview Buttons
+    - Card Button upto 3
+ - Video*
+ - File*
+ - Receipt*
 
 ## Development
 ### `yarn start`

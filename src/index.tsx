@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Chatpack from './components/Chatpack'
-import { fontAwesomeInit } from './font-awesome'
+import { fontAwesomeLibInit } from './utils'
 import './tailwind.css'
 import './index.scss';
 
@@ -16,7 +16,7 @@ const styles = {
   background: `linear-gradient(45deg, ${$pink}, ${$orange})`
 }
 
-fontAwesomeInit()
+fontAwesomeLibInit()
 
 ReactDOM.render(
   <Chatpack styles={styles} />,

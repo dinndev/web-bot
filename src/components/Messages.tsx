@@ -1,6 +1,7 @@
 
 import React from 'react'
 import MessageBubble from './MessageBubble'
+import { returnError } from '../utils'
 
 const Messages = (props: any) => {
     let messages = props.messages

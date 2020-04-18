@@ -23,8 +23,6 @@ const sampleProps = {
 }
 
 
-
-
 class Chatpack extends React.Component<Props> {
 
     state: State = {

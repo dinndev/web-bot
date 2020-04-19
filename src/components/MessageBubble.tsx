@@ -5,22 +5,22 @@ import MessageInputField from './MessageInputField'
 class MessageBubble extends React.Component<any> {
 
     state = {
-        action: this.props.action,
+        type: this.props.type,
         text: this.props.text
     }
 
     message() {
-        const { action } = this.state
+        const { type } = this.state
 
-        switch (action) {
-            case "text-input":
-                return <MessageInputField type="text" messagesController={this.props.messagesController} />
-            default:
+        switch (type) {
+            case "text":
                 return (
                     <div className="chatpack__message_bubble shadow-md my-2 rounded-lg">
                         {this.state.text}
                     </div >
                 )
+            default:
+                return ""
         }
     }
 

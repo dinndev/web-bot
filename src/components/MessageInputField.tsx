@@ -8,19 +8,23 @@ class MessageInputField extends React.Component<any> {
 
     state = {
         editorState: EditorState.createEmpty(),
-        placeholder: this.props.placeholder
+        placeholder: this.props.placeholder,
     }
 
     onChange = (editorState: any) => {
         this.setState({ editorState })
     }
 
-    handleSendUserInput(val: any) {
-        let result: string = val.getPlainText('\u0001')
-        this.props.messagesController.addMessage(result)
+    public handleSendUserInput(val: any) {
+        let result: string = val.getPlainText('\u0001').trim()
+        if (result)
+            this.props.messages.adder({ text: result, type: "text" })
     }
-    // className="chatpack__input__field py-4 px-5 text-center"
+
     render() {
+
+        if (this.props.hidden) return null
+
         return (
             <div className="chatpack__input__container flex shadow-md items-center">
                 <div className="chatpack__input__field py-4 px-5">

@@ -1,15 +1,18 @@
 import React from 'react'
 import Header from './Header'
 import Messages from './Messages'
-import MessagesController from '../actions/messages'
+import MessagesAction from '../actions/messages'
+import MessageInputField from './MessageInputField'
 
 const sampleProps = {
     messages: [
         {
-            text: "Hello, Goodmorning! \nTo start your application. We need to have your name.",
+            text: "Hello, Goodmorning!",
+            type: "text"
         },
         {
-            action: "text-input"
+            text: "To start your application. We need to have your name.",
+            type: "text"
         }
     ],
     botAttributes: {
@@ -23,15 +26,9 @@ const sampleProps = {
     }
 }
 
-
-interface State {
-    botAttributes: any
-    messages: any[]
-}
-
 class Chatpack extends React.Component<any> {
 
-    messages: any
+    messages: MessagesAction
     state: State
 
     constructor(props: any) {
@@ -39,25 +36,27 @@ class Chatpack extends React.Component<any> {
 
         this.state = {
             messages: sampleProps.messages,
-            botAttributes: sampleProps.botAttributes
+            botAttributes: sampleProps.botAttributes,
+            hideInput: false
         }
 
-        this.messages = new MessagesController({ addMessage: this.addMessage, messages: sampleProps.messages })
+        this.messages = new MessagesAction({ addMessage: this.addMessage, messages: sampleProps.messages })
     }
 
     public addMessage = (arg: any[]) => {
-        // this.messages = arg
+        console.log(arg)
         this.setState({
-            messages: arg
+            messages: arg,
+            hideInput: true
         })
-        // console.log(arg)
     }
 
     render() {
         return (
             <div className="chatpack__container h-screen w-full" style={this.props.styles}>
                 <Header {...this.state.botAttributes.header} />
-                <Messages messages={this.messages} botAttributes={this.state.botAttributes} />
+                <Messages messages={this.messages.all} botAttributes={this.state.botAttributes} />
+                <MessageInputField type="text" messages={this.messages} hidden={this.state.hideInput} />
             </div>
         )
     }
@@ -65,10 +64,8 @@ class Chatpack extends React.Component<any> {
 
 export default Chatpack;
 
-
-interface Props {
-    styles: any
-}
-
 interface State {
+    botAttributes: any
+    messages: any[]
+    hideInput: boolean
 }

@@ -1,19 +1,19 @@
-class MessagesController {
+class MessagesAction {
 
     all: any[]
-    adder: any
+    setMessage: any
 
     constructor(props: any) {
         this.all = props.messages
-        this.adder = props.addMessage
+        this.setMessage = props.addMessage
     }
 
 
-    addMessage(arg: any) {
-        this.all.push({ text: arg })
-        this.adder(this.all)
+    adder(arg: any) {
+        this.all.push(arg)
+        this.setMessage(this.all)
     }
 
 }
 
-export default MessagesController
+export default MessagesAction

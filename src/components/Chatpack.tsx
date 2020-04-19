@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Messages from './Messages'
+import MessagesController from '../actions/messages'
 
 const sampleProps = {
     messages: [
@@ -11,7 +12,7 @@ const sampleProps = {
             action: "text-input"
         }
     ],
-    bot_attributes: {
+    botAttributes: {
         header: {
             title: "Chatpack",
             logo: "https://media-exp1.licdn.com/dms/image/C510BAQH-MR5_1PDQBA/company-logo_200_200/0?e=1595462400&v=beta&t=aMMvSAGBzv-vLIJNfVLV8SwTADKeAWG6ZunXJlNjHsI"
@@ -23,20 +24,40 @@ const sampleProps = {
 }
 
 
-class Chatpack extends React.Component<Props> {
+interface State {
+    botAttributes: any
+    messages: any[]
+}
 
-    state: State = {
+class Chatpack extends React.Component<any> {
 
+    messages: any
+    state: State
+
+    constructor(props: any) {
+        super(props)
+
+        this.state = {
+            messages: sampleProps.messages,
+            botAttributes: sampleProps.botAttributes
+        }
+
+        this.messages = new MessagesController({ addMessage: this.addMessage, messages: sampleProps.messages })
+    }
+
+    public addMessage = (arg: any[]) => {
+        // this.messages = arg
+        this.setState({
+            messages: arg
+        })
+        // console.log(arg)
     }
 
     render() {
-
-
-        console.log(this.props)
         return (
             <div className="chatpack__container h-screen w-full" style={this.props.styles}>
-                <Header {...sampleProps.bot_attributes.header} />
-                <Messages {...sampleProps} />
+                <Header {...this.state.botAttributes.header} />
+                <Messages messages={this.messages} botAttributes={this.state.botAttributes} />
             </div>
         )
     }

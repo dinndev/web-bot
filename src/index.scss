@@ -36,21 +36,12 @@ body, html {
         width: max-content;
         margin: 50px auto 100px;
         position: relative;
-        display: block;
         background-color: $offwhite;
         border: 1.5px solid $darkblue;
     }
 
     .chatpack__input__field {
-        max-width: 280px;
         width: 280px;
-        outline: none;
-        background: transparent;
-        word-break: break-word;
-        white-space: pre-wrap;
-        overflow-y: auto;
-        overflow-x: hidden;
-        resize: none;
     }
 
     .chatpack__input__send {

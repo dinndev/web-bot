@@ -4,11 +4,12 @@ import MessageBubble from './MessageBubble'
 import { returnError } from '../utils'
 
 const Messages = (props: any) => {
-    let messages = props.messages
-    let messageStyles = props.bot_attributes.messageStyles
+
+    let messages = props.messages.all
+    let messageStyles = props.botAttributes.messageStyles
     let result: any = []
     for (let message of messages) {
-        result.push(<MessageBubble key={messages.indexOf(message)} {...message} messageStyles={messageStyles} />)
+        result.push(<MessageBubble key={messages.indexOf(message)} addMessage={props.addMessage} {...message} messagesController={props.messages} messageStyles={messageStyles} />)
     }
 
     return (

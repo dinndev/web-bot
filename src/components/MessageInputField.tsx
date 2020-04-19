@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Editor, EditorState } from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
 
 class MessageInputField extends React.Component<any> {
 
     state = {
-        editorState: EditorState.createEmpty()
+        editorState: EditorState.createEmpty(),
+        placeholder: this.props.placeholder
     }
 
     onChange = (editorState: any) => {
@@ -14,20 +16,18 @@ class MessageInputField extends React.Component<any> {
     }
 
     handleSendUserInput(val: any) {
-        if (!val) return
-        console.log(val)
+        let result: string = val.getPlainText('\u0001')
+        this.props.messagesController.addMessage(result)
     }
     // className="chatpack__input__field py-4 px-5 text-center"
     render() {
         return (
-            <div className="chatpack__input__container flex justify-center shadow-md">
-                <div className="chatpack__input__field py-4 px-5 text-center">
-                    <Editor editorState={this.state.editorState} onChange={this.onChange} />
+            <div className="chatpack__input__container flex shadow-md items-center">
+                <div className="chatpack__input__field py-4 px-5">
+                    <Editor editorState={this.state.editorState} placeholder={this.state.placeholder} onChange={this.onChange} />
                 </div>
 
-                {/* <textarea className="chatpack__input__field py-4 px-5 text-center" ></textarea> */}
-                {/* // <input hidden type={type} value={inputValue} onChange={(e) => setInputValue(e.target.value)} /> */}
-                <button className="chatpack__input__send px-5" onClick={() => this.handleSendUserInput(this.state.editorState)}>
+                <button className="chatpack__input__send ml-2 px-5 block" onClick={() => this.handleSendUserInput(this.state.editorState.getCurrentContent())}>
                     <FontAwesomeIcon icon="paper-plane" />
                 </button>
 

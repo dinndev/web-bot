@@ -7,13 +7,21 @@ import MessageInputField from './MessageInputField'
 const sampleProps = {
     messages: [
         {
+            owner: 'bot',
             text: "Hello, Goodmorning!",
             type: "text"
         },
         {
+            owner: 'bot',
             text: "To start your application. We need to have your name.",
             type: "text"
-        }
+        },
+        {
+            owner: 'user',
+            text: "Hi my name is Jen Carlo Villaganas \nHow are you?",
+            type: "text"
+        },
+
     ],
     botAttributes: {
         header: {
@@ -37,7 +45,7 @@ class Chatpack extends React.Component<any> {
         this.state = {
             messages: sampleProps.messages,
             botAttributes: sampleProps.botAttributes,
-            hideInput: false
+            hideInput: true
         }
 
         this.messages = new MessagesAction({ addMessage: this.addMessage, messages: sampleProps.messages })

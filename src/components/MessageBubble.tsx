@@ -1,21 +1,20 @@
 import React from 'react'
-import MessageInputField from './MessageInputField'
-
 
 class MessageBubble extends React.Component<any> {
 
     state = {
         type: this.props.type,
-        text: this.props.text
+        text: this.props.text,
+        owner: this.props.owner
     }
 
     message() {
-        const { type } = this.state
+        const { type, owner } = this.state
 
         switch (type) {
             case "text":
                 return (
-                    <div className="chatpack__message_bubble shadow-md my-2 rounded-lg">
+                    <div className={`chatpack__message_bubble ${owner} shadow-md my-2 rounded-lg`}>
                         {this.state.text}
                     </div >
                 )
@@ -31,9 +30,3 @@ class MessageBubble extends React.Component<any> {
 
 
 export default MessageBubble
-
-interface Props {
-    text?: string
-    action?: string
-    messageStyles?: any
-}

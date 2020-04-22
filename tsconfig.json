@@ -10,7 +10,7 @@
     "outDir": "./dist/",
     "allowJs": true,
     "noEmit": true,
-    // "noEmit": false, // for webpack compile
+    "noEmit": false, // for webpack compile
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

@@ -21,12 +21,18 @@ body, html {
     }
 
     .chatpack__message_bubble {
+        position: relative;
         background: $offwhite;
         padding: 15px 20px;
         display: block;
         white-space:pre-wrap;
         width: max-content;
         max-width: 500px;
+
+
+        &.user {
+
+        }
     }
 
     .chatpack__header {
@@ -54,20 +60,20 @@ body, html {
 /* Mark Pro font */
 @font-face {
     font-family: 'Mark Pro';
-    src: url('/fonts/Mark Pro.tff');
+    src: url('fonts/Mark Pro.ttf');
 }
 
 @font-face {
     font-family: 'Mark Pro Medium';
-    src: url('/fonts/Mark Pro Medium.tff');
+    src: url('fonts/Mark Pro Medium.ttf');
 }
 
 @font-face {
     font-family: 'Mark Pro Bold';
-    src: url('/fonts/Mark Pro Bold.tff');
+    src: url('fonts/Mark Pro Bold.ttf');
 }
 
 @font-face {
     font-family: 'Mark Pro Heavy';
-    src: url('/fonts/Mark Pro Heavy.tff');
+    src: url('fonts/Mark Pro Heavy.ttf');
 }
